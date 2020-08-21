@@ -3,6 +3,7 @@
     <header class="water-header">
       <div class="water-header-left">
         <img src="../public/menu.png" class="water-header__menu" @click="asideOpen = !asideOpen" />
+        <a href="/" class="water-heade__logo">water-ui</a>
       </div>
       <div class="water-header-right">
         <nav class="water-header__nav" v-for="item in $site.themeConfig.nav" :key="item.link">
@@ -73,10 +74,12 @@ export default {
       },
     };
   },
-  mounted() {
+  created() {
     if (this.$page.path == "/") {
       window.location.href = window.location.origin + "/guide/quickstart.html";
     }
+  },
+  mounted() {
     window.addEventListener(
       "message",
       (e) => {
