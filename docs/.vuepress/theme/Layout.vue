@@ -74,10 +74,12 @@ export default {
       },
     };
   },
-  created() {
-  },
+  created() {},
   mounted() {
-    window.location.href = window.location.origin + "/guide/quickstart.html";
+    // if (this.$page.path == "/") {
+    //   window.location.href = window.location.origin + "/guide/quickstart.html";
+    // }
+
     window.addEventListener(
       "message",
       (e) => {
