@@ -75,11 +75,9 @@ export default {
     };
   },
   created() {
-    if (this.$page.path == "/") {
-      window.location.href = window.location.origin + "/guide/quickstart.html";
-    }
   },
   mounted() {
+    window.location.href = window.location.origin + "/guide/quickstart.html";
     window.addEventListener(
       "message",
       (e) => {
