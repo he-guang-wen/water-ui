@@ -3,7 +3,7 @@
     <header class="water-header">
       <div class="water-header-left">
         <img src="../public/menu.png" class="water-header__menu" @click="asideOpen = !asideOpen" />
-        <a href="/" class="water-heade__logo">water-ui</a>
+        <a :href="$site.base" class="water-heade__logo">water-ui</a>
       </div>
       <div class="water-header-right">
         <nav class="water-header__nav" v-for="item in $site.themeConfig.nav" :key="item.link">
@@ -58,8 +58,9 @@
 export default {
   data() {
     return {
+      origin: "https:/he-guang-wen.github.io/water-ui/docs-dist/",
       asideOpen: true,
-      iframeOrigin: "http://localhost:8080",
+      iframeOrigin: "https:/he-guang-wen.github.io/water-ui/dist/index.html",
       iframePath: "",
       asideNavs: "",
       pageNav: {
@@ -76,9 +77,11 @@ export default {
   },
   created() {},
   mounted() {
-    // if (this.$page.path == "/") {
-    //   window.location.href = window.location.origin + "/guide/quickstart.html";
-    // }
+    // console.log(this.$site.base,'this.$sitethis.$site')
+    if (this.$page.path == "/") {
+      window.location.href =
+        window.location.origin + "/water-ui/docs-dist/guide/quickstart.html";
+    }
 
     window.addEventListener(
       "message",
@@ -95,7 +98,7 @@ export default {
         });
 
         if (page) path = e.data + ".html";
-        href = window.location.origin + path;
+        href = this.origin + path;
         // console.log(window.location,'window.locationwindow.location')
         window.location.href = href;
       },
@@ -136,6 +139,7 @@ export default {
       navs.forEach((item) => {
         pages.forEach((page) => {
           if (page.path.indexOf(item.catalog) != -1) {
+            page.path = this.$site.base + page.path;
             item.pages.push(page);
           }
         });
