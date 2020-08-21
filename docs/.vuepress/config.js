@@ -1,5 +1,5 @@
 module.exports = {
-    base: "https://github.com/he-guang-wen/water-ui/tree/master/dist/",
+    base: "https://github.com/he-guang-wen/water-ui/tree/master/docs/.vuepress/dist/",
     title: 'water-ui文档', // 设置网站标题
     description: 'water-ui',
     themeConfig: {
