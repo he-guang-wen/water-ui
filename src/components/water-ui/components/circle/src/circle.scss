@@ -1,0 +1,84 @@
+.wr-progress {
+    padding: 5px 0;
+}
+.wr-progress-info {
+    display: inline-block;
+    color: #000;
+}
+
+.wr-progress-circle {
+    position: relative;
+    svg {
+        height: 100%;
+        width: 100%;
+    }
+
+    .wr-progress-circle_text {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0 4px;
+        color: #323233;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+}
+.wr-progress-barContainer {
+    display: flex;
+
+    .wr-progress-bar {
+        position: relative;
+        width: 88%;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    
+    .wr-progress-bar-wave:before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        content: " ";
+        height: 100%;
+        width: 100%;
+        background: #fff;
+        opacity: .2;
+        animation: myfirst 3s infinite;
+    }
+    .wr-progress-bar-value {
+        position: relative;
+    }
+    .wr-progress-bar-marke {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translate3d(0, -50%, 0);
+        border-radius: 50%;
+    }
+    .wr-progress-bar-marke_value {
+        height: 100%;
+        color: #fff;
+    }
+    .wr-progress-barBuilt-info {
+        color: #000;
+        width: 12%;
+    }
+}
+
+@keyframes myfirst {
+    from {
+       width: 0;
+       opacity: .3;
+    }
+    to {
+        width: 100%;
+        opacity:0;
+    }
+}

@@ -1,0 +1,41 @@
+.default-style {
+    border: 0;
+    outline: none;
+}
+
+.wr-input-number {
+    display: inline-block;
+    font-size: 16px;
+}
+
+@mixin button-style {
+    width: 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wr-input-number--disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: .7;
+}
+
+.wr-input-number_decrease {
+    @extend .default-style;
+    @include button-style;
+}
+
+.wr-input-number_increase {
+    @extend .default-style;
+    @include button-style;
+}
+
+.wr-input-number_input {
+    @extend .default-style;
+    margin: 0 5px;
+    width: 30px;
+    height: 20px;
+    padding: 0 3px;
+    text-align: center;
+}

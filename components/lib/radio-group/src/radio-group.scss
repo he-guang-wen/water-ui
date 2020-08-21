@@ -1,0 +1,12 @@
+.wr-radio-group{
+    display: flex;
+    flex-wrap: wrap;
+}
+.wr-radio-group--vertical{
+    flex-direction: column; 
+}
+.wr-radio-group--disabled{
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: .7 ;
+}

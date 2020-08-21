@@ -1,0 +1,29 @@
+.wr-divider {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    border: 1px solid;
+    border-width: 0;
+    font-size: 14px;
+}
+
+.wr-divider::before {
+    content: " ";
+    height: 1px;
+    flex: 1;
+    border-color: inherit;
+    border-style: inherit;
+    border-width: 1px 0 0;
+    width: 70px;
+    margin-right: 10px;
+}
+
+.wr-divider::after {
+    content: " ";
+    height: 1px;
+    flex: 1;
+    border-color: inherit;
+    border-style: inherit;
+    border-width: 1px 0 0;
+    margin-left: 10px;
+}

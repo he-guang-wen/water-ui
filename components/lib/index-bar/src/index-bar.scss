@@ -1,0 +1,40 @@
+.wr-index-bar {
+    position: relative;
+    overflow-y: auto;
+    height: auto;
+    outline: none;
+}
+
+.index-anchor__camouflage {
+    width: 100%;
+    background: #ffffff;
+    position: fixed;
+    top: 0;
+}
+
+.wr-index-bar__sidebar {
+    position: fixed;
+    top: 0;
+    right: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 5px;
+    z-index: 88;
+}
+
+.wr-index-bar__hint {
+    position: fixed;
+    top: 50%;
+    right: 50px;
+    background: rgba(0, 0, 0, 0.7);
+    transform: translateY(-50%);
+    height: 50px;
+    width: 50px;
+    border-radius: 5px;
+    color: #ffffff;
+    z-index: 88;
+    text-align: center;
+    line-height: 50px;
+}

@@ -1,0 +1,14 @@
+.wr-checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.wr-checkbox-group--vertical {
+    flex-direction: column;
+}
+
+.wr-checkbox-group--disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: .7;
+}

@@ -1,0 +1,32 @@
+.hello {
+    height: 300px;
+    width: 100%;
+    display: flex;
+}
+
+.wr-picker {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.wr-picker-title-body {
+    width: 100%;
+    height: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wr-picker__cancel {
+    padding: 0 10px;
+}
+
+.wr-picker__confirm {
+    padding: 0 10px;
+}
+
+.wr-picker-body {
+    width: 100%;
+    display: flex;
+}

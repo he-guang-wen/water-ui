@@ -1,0 +1,14 @@
+.wr-swiper-wrapper {
+    width: 100%;
+    overflow: hidden;
+    .wr-swiper {
+        height: 100%;
+        display: flex;
+    }
+    // display: flex;
+    .wr-swiper-item {
+        width: 100%;
+        height: 100%;
+        float: left;
+    }
+}

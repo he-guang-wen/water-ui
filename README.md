@@ -1,2 +1,19 @@
 # water-ui
-A Component Library for Vue.js
+
+# Install
+
+```javascript
+# Using npm
+npm i vant -S
+```
+
+# Quickstart
+```javascript
+import WaterUi from 'water-ui'
+import 'water-ui/lib/water-ui.css';
+Vue.use(WaterUi);
+```
+
+# LICENSE
+
+MIT

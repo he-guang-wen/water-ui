@@ -1,0 +1,31 @@
+.wr-checkbox {
+    display: inline-flex;
+    align-items: center;
+}
+
+.wr-checkbox_icon-wrap {
+    display: inline-flex;
+    // height: 23px;
+    // width: 23px;
+    border: 1px solid;
+    align-items: center;
+    justify-content: center;
+}
+
+.wr-checkbox--round {
+    border-radius: 50%;
+}
+
+.wr-checkbox_label {
+    padding: 0 5px;
+}
+
+.wr-checkbox--disabled {
+    color: #c8c9cc;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.wr-checkbox__space-between {
+    justify-content: space-between;
+}

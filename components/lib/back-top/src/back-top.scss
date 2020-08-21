@@ -1,0 +1,14 @@
+.wr-back-top {
+    position: fixed;
+    font-size: 14px;
+    z-index: 999;
+}
+
+.wr-back-top-wrap {
+    padding: 2px 3px;
+    box-shadow: 0 0 2px 1px #00000080;
+}
+
+.wr-back-top-wrap--round {
+    border-radius: 50%;
+}

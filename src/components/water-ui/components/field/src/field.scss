@@ -1,0 +1,72 @@
+$fontSize: 14px;
+.wr-disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+.wr-field {
+    display: flex;
+    padding: 12px 10px;
+    font-size: $fontSize;
+    position: relative;
+}
+.wr-field-required::before {
+    position: relative;
+    width: 10px;
+    color: #ee0a24;
+    margin-right: 2px;
+    content: "*";
+}
+.wr-field-border::after {
+    position: absolute;
+    box-sizing: border-box;
+    content: " ";
+    pointer-events: none;
+    right: 0;
+    bottom: 0;
+    left: 15px;
+    border-bottom: 1px solid #dcdfe6;
+}
+.wr-field-left-icon {
+    padding: 0 2px;
+
+}
+.wr-field-right{
+    padding: 0 2px;
+    height: 100%;
+
+}
+
+.wr-field-laber {
+    display: flex;
+    // justify-content: flex-start;
+    align-items: flex-start;
+    height: 100%;
+}
+
+.wr-field-value {
+    flex: auto;
+}
+.wr-field-value_inputCon {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.wr-field-value_input {
+    height: auto;
+    display: block;
+    box-sizing: border-box;
+    border: none;
+    background: none;
+    outline: none;
+    resize: none;
+    font-size: $fontSize;
+}
+.wr-field-value_input:focus {
+    border: none;
+}
+.wr-field-error-message {
+    text-align: left;
+    color: red;
+    font-size: 12px;
+}

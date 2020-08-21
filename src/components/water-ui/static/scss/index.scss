@@ -1,0 +1,125 @@
+.wr-disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+//按钮主题颜色
+.wr-button--default {
+    border: 1px solid #ebedf0;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.wr-button--primary {
+    color: #fff;
+    background-color: #1989fa;
+    border: 1px solid #1989fa;
+}
+
+.wr-button--success {
+    color: #fff;
+    background-color: #07c160;
+    border: 1px solid #07c160;
+}
+
+.wr-button--info {
+    color: #fff;
+    background-color: #909999;
+    border: 1px solid #909999;
+}
+
+.wr-button--error {
+    color: #fff;
+    background-color: #f55555;
+    border: 1px solid #f55555;
+}
+
+.wr-button--warning {
+    color: #fff;
+    background-color: #ef9f27;
+    border: 1px solid #ef9f27;
+}
+
+//朴素按钮
+.wr-button--primary.plain {
+    color: #1989fa;
+    background-color: #ffffff;
+    border: 1px solid #1989fa;
+}
+
+.wr-button--success.plain {
+    color: #07c160;
+    background-color: #ffffff;
+    border: 1px solid #07c160;
+}
+
+.wr-button--error.plain {
+    color: #f55555;
+    background-color: #ffffff;
+    border: 1px solid #f55555;
+}
+
+.wr-button--info {
+    color: #909999;
+    background-color: #ffffff;
+    border: 1px solid #909999;
+}
+
+.wr-button--warning {
+    color: #ef9f27;
+    background-color: #ffffff;
+    border: 1px solid #ef9f27;
+}
+
+// 按钮大小
+.wr-button-size--long {
+    padding: 0 10px;
+    height: 35px;
+    width: 100%;
+}
+
+.wr-button-size--default {
+    padding: 0 15px;
+    height: 35px;
+}
+
+.wr-button-size--small {
+    padding: 0 10px;
+    height: 25px;
+}
+
+.wr-button-size--mini {
+    padding: 0 5px;
+    height: 20px;
+}
+
+//开关选择器
+.wr-switch {
+    display: inline-block;
+    position: relative;
+    height: 1em;
+    width: 2em;
+    border-radius: 1em;
+    background-color: #cccccc;
+    border: 1px solid #cccccc;
+}
+
+.wr-switch.wr-switch--on {
+    background-color: #1989fa;
+    border: 1px solid #1989fa;
+}
+
+.wr-switch-node {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1em;
+    width: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background-color: #ffffff;
+    transition: transform 0.3s cubic-bezier(0.3, 1.05, 0.4, 1.05), -webkit-transform 0.3s cubic-bezier(0.3, 1.05, 0.4, 1.05);
+}

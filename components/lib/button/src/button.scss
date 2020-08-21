@@ -1,0 +1,39 @@
+.wr-button {
+    outline: none;
+    border-radius: 5px;
+    font-size: 14px;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    color: #ffffff;
+}
+
+// .wr-button:active {
+//     opacity: 0.9;
+// }
+.wr-button::before {
+    content: ' ';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    border: 1px solid #000000;
+    opacity: 0;
+    border: 0;
+}
+
+.wr-button:active:before {
+    opacity: 0.1;
+}
+
+.round {
+    border-radius: 25px;
+}
+
+.wr-button-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

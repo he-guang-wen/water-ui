@@ -1,0 +1,42 @@
+.wr-badge {
+    position: relative;
+    display: inline-block;
+}
+
+.wr-badge-content {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 4px 5px;
+    font-size: 12px;
+    border-radius: 12px;
+    color: #fff;
+    transform: translateY(-50%) translateX(50%);
+    height: 8px;
+    line-height: 8px;
+}
+
+.is-dot {
+    padding: 1px 5px;
+    border-radius: 12px;
+}
+
+.wr-badge_content--primary {
+    color: #fff;
+    background: #5DA3F5;
+}
+
+.wr-badge_content--danger {
+    color: #fff;
+    background: #f9422f;
+}
+
+.wr-badge_content--success {
+    color: #fff;
+    background: #59d273;
+}
+
+.wr-badge_content--warning {
+    color: #fff;
+    background: #ef9f27;
+}
