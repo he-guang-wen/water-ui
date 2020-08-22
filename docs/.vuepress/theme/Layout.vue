@@ -168,7 +168,7 @@ export default {
       let page = this.$page.path;
 
       let path = page.split(".html")[0];
-      // path = str.replace(this.$site.base, "");
+      path = str.replace("docs-dist", "dist");
       this.iframePath = path;
     },
     asideLinkClick() {
