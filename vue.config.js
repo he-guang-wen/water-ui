@@ -5,7 +5,7 @@ module.exports = {
     //         // 移除 preload 插件
     //     config.plugins.delete('preload-index');
     // },
-    publicPath: './',
+    publicPath: '/water-ui/dist',
     lintOnSave: 'warning',
     pages: {
         index: {
