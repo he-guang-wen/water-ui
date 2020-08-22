@@ -79,33 +79,33 @@ export default {
   created() {},
   mounted() {
     // console.log(this.$site.base,'this.$sitethis.$site')
-    if (this.$page.path == "/") {
-      window.location.href =
-        window.location.origin + "/water-ui/docs-dist/guide/quickstart.html";
-    }
+    // if (this.$page.path == "/") {
+    //   window.location.href =
+    //     window.location.origin + "/water-ui/docs-dist/guide/quickstart.html";
+    // }
 
-    // window.addEventListener(
-    //   "message",
-    //   (e) => {
-    //     if (typeof e.data != "string") return;
+    window.addEventListener(
+      "message",
+      (e) => {
+        if (typeof e.data != "string") return;
 
-    //     if (this.$page.path == e.data + ".html") return;
-    //     let path = e.data;
-    //     let href;
-    //     let pages = this.$site.pages;
-    //     if (pages[0].path == "/") pages.shift();
-    //     let page = pages.find((item) => {
-    //       return item.path == e.data + ".html";
-    //     });
+        if (this.$page.path == e.data + ".html") return;
+        let path = e.data;
+        let href;
+        let pages = this.$site.pages;
+        if (pages[0].path == "/") pages.shift();
+        let page = pages.find((item) => {
+          return item.path == e.data + ".html";
+        });
 
-    //     if (!page) return;
-    //     path = e.data + ".html";
-    //     href = this.origin + path;
-    //     // console.log(window.location,'window.locationwindow.location')
-    //     window.location.href = href;
-    //   },
-    //   false
-    // );
+        if (!page) return;
+        path = e.data + ".html";
+        href = this.origin + path;
+        // console.log(window.location,'window.locationwindow.location')
+        window.location.href = href;
+      },
+      false
+    );
 
     this.asideOpen = false;
     let asideTop = sessionStorage.getItem("asideTop");
