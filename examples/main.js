@@ -15,7 +15,7 @@ router.beforeEach((to, from, next) => {
     if (to.matched.length === 0) {
         next('/')
     } else {
-        if (window.parent && to.path != '/') window.parent.postMessage(to.path, '*');
+        // if (window.parent && to.path != '/') window.parent.postMessage(to.path, '*');
         next()
     }
 
