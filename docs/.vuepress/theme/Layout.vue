@@ -60,7 +60,7 @@ export default {
     return {
       origin: "https:/he-guang-wen.github.io/water-ui/docs-dist/",
       asideOpen: true,
-      iframeOrigin: "https:/he-guang-wen.github.io/water-ui/dist/index.html",
+      iframeOrigin: "https:/he-guang-wen.github.io",
       // iframeOrigin: "",
       iframePath: "",
       asideNavs: "",
@@ -168,6 +168,7 @@ export default {
       let page = this.$page.path;
 
       let path = page.split(".html")[0];
+      // path = str.replace(this.$site.base, "");
       this.iframePath = path;
     },
     asideLinkClick() {
