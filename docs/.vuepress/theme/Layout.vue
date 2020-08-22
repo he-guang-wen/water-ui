@@ -79,10 +79,10 @@ export default {
   created() {},
   mounted() {
     // console.log(this.$site.base,'this.$sitethis.$site')
-    // if (this.$page.path == "/") {
-    //   window.location.href =
-    //     window.location.origin + "/water-ui/docs-dist/guide/quickstart.html";
-    // }
+    if (this.$page.path == "/") {
+      window.location.href =
+      this.origin + "guide/quickstart.html";
+    }
 
     window.addEventListener(
       "message",
