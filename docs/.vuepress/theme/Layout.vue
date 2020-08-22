@@ -60,8 +60,8 @@ export default {
     return {
       origin: "https:/he-guang-wen.github.io/water-ui/docs-dist/",
       asideOpen: true,
-      // iframeOrigin: "https:/he-guang-wen.github.io/water-ui/dist/index.html",
-      iframeOrigin: "",
+      iframeOrigin: "https:/he-guang-wen.github.io/water-ui/dist/index.html",
+      // iframeOrigin: "",
       iframePath: "",
       asideNavs: "",
       pageNav: {
