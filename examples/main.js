@@ -12,10 +12,10 @@ Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {
     // window.scrollTo(0, 0) 
-    if (window.parent && to.path != '/') window.parent.postMessage(to.path, '*');
     if (to.matched.length === 0) {
         next('/')
     } else {
+        if (window.parent && to.path != '/') window.parent.postMessage(to.path, '*');
         next()
     }
 
