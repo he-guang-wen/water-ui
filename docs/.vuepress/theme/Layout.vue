@@ -80,9 +80,7 @@ export default {
   mounted() {
     // console.log(this.$site.base,'this.$sitethis.$site')
     if (this.$page.path == "/") {
-      console.log(this.origin + "guide/quickstart.html",'this.origin + "guide/quickstart.html"')
-      // window.location.href =
-      //   this.origin + "guide/quickstart.html";
+      window.location.href = this.origin + "guide/quickstart.html";
     }
 
     window.addEventListener(
@@ -104,11 +102,11 @@ export default {
 
         if (!page) return;
         // path = e.data + ".html";
-        href = window.location.origin + page.regularPath;
-        alert(page.regularPath)
+        href = window.location.origin + page.path;
+        alert(page.path);
         // console.log(window.location,'window.locationwindow.location')
-        alert(href)
-        window.location.href = href;  
+        alert(href);
+        window.location.href = href;
       },
       false
     );
