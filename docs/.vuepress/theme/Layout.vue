@@ -80,7 +80,8 @@ export default {
   mounted() {
     // console.log(this.$site.base,'this.$sitethis.$site')
     if (this.$page.path == "/") {
-      window.location.href = this.origin + "guide/quickstart.html";
+      // window.location.href = this.origin + "guide/quickstart.html";
+      // return
     }
 
     window.addEventListener(
