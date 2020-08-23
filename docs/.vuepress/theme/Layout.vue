@@ -104,10 +104,11 @@ export default {
 
         if (!page) return;
         // path = e.data + ".html";
-        href = this.origin + page.regularPath;
+        href = window.location.origin + page.regularPath;
+        alert(page.regularPath)
         // console.log(window.location,'window.locationwindow.location')
         alert(href)
-        window.location.href = href;
+        window.location.href = href;  
       },
       false
     );
