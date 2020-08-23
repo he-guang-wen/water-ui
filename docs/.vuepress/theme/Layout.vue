@@ -104,7 +104,7 @@ export default {
 
         if (!page) return;
         // path = e.data + ".html";
-        href = this.origin + path.regularPath;
+        href = this.origin + page.regularPath;
         // console.log(window.location,'window.locationwindow.location')
         alert(href)
         window.location.href = href;
