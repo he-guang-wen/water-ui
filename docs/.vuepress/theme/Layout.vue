@@ -80,7 +80,7 @@ export default {
   mounted() {
     // console.log(this.$site.base,'this.$sitethis.$site')
     if (this.$page.path == "/") {
-      window.location.href = this.origin + "guide/quickstart.html";
+      window.location.href = "https://he-guang-wen.github.io/water-ui/docs-dist/guide/quickstart.html";
       return
     }
 
@@ -88,7 +88,6 @@ export default {
       "message",
       (e) => {
         if (typeof e.data != "string") return;
-          // console.log(this.$page,'this.$page')
         if (this.$page.regularPath == e.data + ".html") return;
         let path = e.data;
         let href;
@@ -102,11 +101,7 @@ export default {
         });
 
         if (!page) return;
-        // path = e.data + ".html";
         href = window.location.origin + page.path;
-        // alert(page.path);
-        // console.log(window.location,'window.locationwindow.location')
-        // alert(href);
         window.location.href = href;
       },
       false
