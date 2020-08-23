@@ -89,7 +89,7 @@ export default {
       (e) => {
         if (typeof e.data != "string") return;
           console.log(this.$page,'this.$page')
-        if (this.$page.path == e.data + ".html") return;
+        if (this.$page.regularPath == e.data + ".html") return;
         let path = e.data;
         let href;
         console.log(path, "传过来的路径");
