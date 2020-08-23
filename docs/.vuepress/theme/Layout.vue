@@ -88,7 +88,7 @@ export default {
       "message",
       (e) => {
         if (typeof e.data != "string") return;
-
+          console.log(this.$page,'this.$page')
         if (this.$page.path == e.data + ".html") return;
         let path = e.data;
         let href;
@@ -107,7 +107,7 @@ export default {
         alert(page.path);
         // console.log(window.location,'window.locationwindow.location')
         alert(href);
-        window.location.href = href;
+        // window.location.href = href;
       },
       false
     );
