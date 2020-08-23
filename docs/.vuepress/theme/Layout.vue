@@ -81,7 +81,7 @@ export default {
     // console.log(this.$site.base,'this.$sitethis.$site')
     if (this.$page.path == "/") {
       window.location.href =
-      this.origin + "guide/quickstart.html";
+        this.origin + "/water-ui/docs-dist/guide/quickstart.html";
     }
 
     window.addEventListener(
@@ -92,7 +92,10 @@ export default {
         if (this.$page.path == e.data + ".html") return;
         let path = e.data;
         let href;
+        console.log(path, "传过来的路径");
         let pages = this.$site.pages;
+        console.log(path, "当前路径");
+        console.log(pages, "路由列表");
         if (pages[0].path == "/") pages.shift();
         let page = pages.find((item) => {
           return item.path == e.data + ".html";
@@ -102,6 +105,7 @@ export default {
         path = e.data + ".html";
         href = this.origin + path;
         // console.log(window.location,'window.locationwindow.location')
+        console.log(path, "最终路径");
         window.location.href = href;
       },
       false
