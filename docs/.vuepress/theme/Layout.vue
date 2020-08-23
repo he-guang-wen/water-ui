@@ -106,7 +106,7 @@ export default {
         href = this.origin + path;
         // console.log(window.location,'window.locationwindow.location')
         console.log(path, "最终路径");
-        window.location.href = href;
+        // window.location.href = href;
       },
       false
     );
