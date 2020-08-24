@@ -58,7 +58,7 @@
 export default {
   data() {
     return {
-      origin: "https:/he-guang-wen.github.io/water-ui/docs-dist/",
+      origin: "https://he-guang-wen.gitee.io/water-ui/docs-dist/",
       asideOpen: true,
       // iframeOrigin: "https:/he-guang-wen.github.io",
       iframeOrigin: "",
@@ -81,7 +81,7 @@ export default {
     // console.log(this.$site.base,'this.$sitethis.$site')
     if (this.$page.path == "/") {
       window.location.href =
-        "https://he-guang-wen.github.io/water-ui/docs-dist/guide/quickstart.html";
+        "https://he-guang-wen.gitee.io/water-ui/docs-dist/guide/quickstart.html";
       return;
     }
     this.isPc();
@@ -181,7 +181,7 @@ export default {
       if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
         if (confirm("检测当前为移动端，是否切换到演示地址")) {
           window.location.href =
-            "https://he-guang-wen.github.io/water-ui/dist/";
+            "https://he-guang-wen.gitee.io/water-ui/dist/";
         } else {
           sessionStorage.setItem("hideDialog", true);
         }

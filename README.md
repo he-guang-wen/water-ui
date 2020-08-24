@@ -20,8 +20,8 @@ Vue.use(WaterUi);
 github:
 <https://he-guang-wen.github.io/water-ui/docs-dist/>
 
-gitee: 
-<https://hgwto.gitee.io/water-ui/docs-dist/>
+gitee:  
+<https://he-guang-wen.gitee.io/water-ui/docs-dist/>
 
 
 # Demo Address
@@ -29,7 +29,7 @@ github:
 <https://he-guang-wen.github.io/water-ui/dist/>
 
 gitee: 
-<https://hgwto.gitee.io/water-ui/dist/>
+<https://he-guang-wen.gitee.io/water-ui/dist/>
 
 # LICENSE
 MIT
