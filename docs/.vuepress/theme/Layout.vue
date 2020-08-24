@@ -6,6 +6,9 @@
         <a :href="$site.base" class="water-heade__logo">water-ui</a>
       </div>
       <div class="water-header-right">
+        <a href="https://github.com/he-guang-wen/water-ui">
+        <img src="../public/github.png" class="water-header__github"/>
+        </a>
         <nav class="water-header__nav" v-for="item in $site.themeConfig.nav" :key="item.link">
           <a :href="item.link">{{item.text}}</a>
         </nav>

@@ -96,6 +96,11 @@ body,
   padding-left: 10px;
   display: none;
 }
+.water-header__github {
+  width: 30px;
+  height: 30px;
+  margin-right: 80px;
+}
 .water-header-right {
   height: 100%;
   display: flex;
