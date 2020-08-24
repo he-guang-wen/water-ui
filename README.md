@@ -20,7 +20,7 @@ Vue.use(WaterUi);
 github:
 <https://he-guang-wen.github.io/water-ui/docs-dist/>
 
-gitee:  
+gitee:
 <https://he-guang-wen.gitee.io/water-ui/docs-dist/>
 
 
