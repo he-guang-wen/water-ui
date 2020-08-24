@@ -55,6 +55,7 @@
   </div>
 </template>
 <script>
+import Dialog from "../../../components/lib/dialog/index.js";
 export default {
   data() {
     return {
@@ -79,11 +80,13 @@ export default {
   created() {},
   mounted() {
     // console.log(this.$site.base,'this.$sitethis.$site')
-    if (this.$page.path == "/") {
-      window.location.href = "https://he-guang-wen.github.io/water-ui/docs-dist/guide/quickstart.html";
-      return
-    }
 
+    if (this.$page.path == "/") {
+      window.location.href =
+        "https://he-guang-wen.github.io/water-ui/docs-dist/guide/quickstart.html";
+      return;
+    }
+        this.isPc();
     window.addEventListener(
       "message",
       (e) => {
@@ -174,6 +177,25 @@ export default {
     },
     asideLinkClick() {
       sessionStorage.setItem("asideTop", this.$refs.aside.scrollTop);
+    },
+    isPc() {
+      if(sessionStorage.getItem('hideDialog')) return false
+      if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+        Dialog({
+          title: "提示",
+          content: "检测到当前为移动端，是否切换到组件演示地址",
+        })
+          .then((res) => {
+            window.location.href =
+              "https://he-guang-wen.github.io/water-ui/dist/";
+          })
+          .catch((err) => {
+            sessionStorage.setItem('hideDialog',true)
+          });
+        return false;
+      } else {
+        return true;
+      }
     },
   },
 };
