@@ -206,6 +206,7 @@ export default {
     emitConfirm() {
       let list = [];
       let values = [];
+      this.close(); 
       this.pickerItemList.map((item) => {
         if (item.wdata.length > 0) {
           let pValue = this.props.value;

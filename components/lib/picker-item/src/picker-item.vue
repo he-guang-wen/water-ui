@@ -122,7 +122,7 @@ export default {
         }
       }
 
-      this.currentTranslateY += difference * 0.6;
+      this.currentTranslateY += difference * 0.1;
       // console.log(dff);
       // if (!this.time) {
       //   this.time = setInterval(() => {
@@ -198,7 +198,9 @@ export default {
     },
     touchend() {
       this.activity = false;
-      if (this.short) return;
+      console.log(this.short,'selectedIndexselectedIndex')
+
+      // if (this.short) return;
       // if (Math.abs(difference) < this.selecteHeight / 2) return;
 
       let translate = this.currentTranslateY + this.translateY;
