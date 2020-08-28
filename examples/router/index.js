@@ -116,6 +116,13 @@ const routes = [{
                     import ( /* webpackChunkName: "Picker" */ '../views/form/picker.vue')
 
             },
+            {
+                path: '/form/keyboard',
+                name: 'keyboard',
+                meta: { title: "Keyboard 键盘" },
+                component: () =>
+                    import ( /* webpackChunkName: "Keyboard" */ '../views/form/keyboard.vue')
+            },
 
         ]
     },

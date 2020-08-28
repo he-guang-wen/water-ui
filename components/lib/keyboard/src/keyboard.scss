@@ -1,0 +1,91 @@
+.wr-keyboard {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: #f3f3f3;
+    outline: none;
+}
+
+.wr-keyboard__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    padding: 5px 0 0 0;
+    .wr-keyboard__confirm {
+        padding-right: 10px;
+        color: #1989fa;
+    }
+    .wr-keyboard__cancel {
+        color: #888;
+        width: 38px;
+    }
+}
+
+.wr-keyboard__body {
+    width: 100%;
+}
+
+.wr-keyboard__keys {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    .wr-key__wrapper {
+        // padding-right: 5px;
+        // padding-bottom: 5px;
+        padding: 3px;
+        flex-basis: 33%;
+        box-sizing: border-box;
+        height: 48px;
+        font-size: 24px;
+    }
+    .keyboard__card {
+        flex-basis: 10%;
+        height: 40px;
+        font-size: 16px;
+        margin: 5px 0;
+    }
+    .wr-key {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        background: #fff;
+        border: 0;
+        border-radius: 5px;
+    }
+    .wr-keyboard__delete {
+        position: absolute;
+        right: 6px;
+        bottom: 8px;
+        background: #fff;
+        padding: 5px;
+        border-radius: 5px;
+        width: 50px;
+        text-align: center;
+    }
+    .wr-keyboard__switch {
+        position: absolute;
+        left: 6px;
+        bottom: 8px;
+        background: #fff;
+        padding: 5px;
+        border-radius: 5px;
+        width: 50px;
+        text-align: center;
+        span {
+            color: #a7a7a7;
+        }
+        .switch--active {
+            color: #000;
+            font-weight: 600;
+        }
+    }
+    .wr-key--active {
+        background: #dcdfe6;
+    }
+}
