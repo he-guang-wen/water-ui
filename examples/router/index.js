@@ -123,6 +123,13 @@ const routes = [{
                 component: () =>
                     import ( /* webpackChunkName: "Keyboard" */ '../views/form/keyboard.vue')
             },
+            {
+                path: '/form/rate',
+                name: 'rate',
+                meta: { title: "Rate 评分" },
+                component: () =>
+                    import ( /* webpackChunkName: "Rate" */ '../views/form/rate.vue')
+            },
 
         ]
     },

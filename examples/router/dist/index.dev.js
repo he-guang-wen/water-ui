@@ -200,6 +200,17 @@ var routes = [{
         return _interopRequireWildcard(require('../views/form/keyboard.vue'));
       });
     }
+  }, {
+    path: '/form/rate',
+    name: 'rate',
+    meta: {
+      title: "Rate 评分"
+    },
+    component: function component() {
+      return Promise.resolve().then(function () {
+        return _interopRequireWildcard(require('../views/form/rate.vue'));
+      });
+    }
   }]
 }, {
   path: '/feedback',

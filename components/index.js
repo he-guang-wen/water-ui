@@ -10,6 +10,7 @@ import WrInputNumber from './lib/input-number/index'
 import wrField from './lib/field/index'
 import wrPicker from './lib/picker/index'
 import wrKeyboard from './lib/keyboard/index'
+import wrRate from './lib/rate/index'
 import wrCellGroup from './lib/cell-group/index'
 import wrCell from './lib/cell/index'
 import wrBadge from './lib/badge/index'
@@ -60,6 +61,7 @@ const components = [
     wrField,
     wrPicker,
     wrKeyboard,
+    wrRate,
     wrImage,
     wrCell,
     wrBadge,
@@ -120,6 +122,7 @@ export default {
     wrField,
     wrPicker,
     wrKeyboard,
+    wrRate,
     wrImage,
     wrCellGroup,
     wrCell,

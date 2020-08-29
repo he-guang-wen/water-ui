@@ -1,10 +1,45 @@
 {
   "id": "1853986",
-  "name": "bom-ui",
-  "font_family": "iconfont",
-  "css_prefix_text": "icon-",
+  "name": "water-ui",
+  "font_family": "wr-icon",
+  "css_prefix_text": "wr-icon--",
   "description": "",
   "glyphs": [
+    {
+      "icon_id": "1019908",
+      "name": "爱心小",
+      "font_class": "heartShape-fill",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "3390960",
+      "name": "爱心",
+      "font_class": "heartShape",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "6096934",
+      "name": "评分",
+      "font_class": "star",
+      "unicode": "e6cf",
+      "unicode_decimal": 59087
+    },
+    {
+      "icon_id": "7086633",
+      "name": "输入法删除",
+      "font_class": "backspace",
+      "unicode": "e71e",
+      "unicode_decimal": 59166
+    },
+    {
+      "icon_id": "8949535",
+      "name": "评分",
+      "font_class": "star-fill",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    },
     {
       "icon_id": "3717794",
       "name": "成功",
@@ -147,7 +182,7 @@
     },
     {
       "icon_id": "11487978",
-      "name": "arrow-lift",
+      "name": "arrow-left",
       "font_class": "arrow-left",
       "unicode": "e744",
       "unicode_decimal": 59204

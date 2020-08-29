@@ -1,5 +1,5 @@
 <template>
-  <i :class="'wr icon-'+ name" :style="{'color':color,'fontSize':size+'px'}" @click="iconClick"></i>
+  <i :class="'wr-icon wr-icon--'+ name" :style="{'color':color,'fontSize':size+'px'}" @click="iconClick"></i>
 </template>
 <script>
 export default {
@@ -15,6 +15,8 @@ export default {
       type: [String, Number],
       default: 25,
     },
+  },
+  computed: {
   },
   methods: {
     iconClick(e) {
