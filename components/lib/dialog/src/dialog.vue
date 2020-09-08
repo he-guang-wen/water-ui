@@ -14,12 +14,22 @@
           <div class="wr-dialog__footer-warp">
             <div
               class="wr-dialog__footer-button cancel"
-              @click="cancel"
+              :class="{'wr-dialog__footer-button--active':active=='cancel'}"
+              name="dialogButton"
+              operate="cancel"
+              @click="click('cancel')"
+              @touchstart.prevent="touchstart('cancel')"
+              @touchend="touchend($event,'cancel')"
               v-show="!hideCancel"
             >{{cancelText}}</div>
             <div
               class="wr-dialog__footer-button confirm"
-              @click="confirm"
+              :class="{'wr-dialog__footer-button--active':active=='confirm'}"
+              name="dialogButton"
+              operate="confirm"
+              @click="click('confirm')"
+              @touchstart.prevent="touchstart('confirm')"
+              @touchend="touchend($event,'confirm')"
               v-show="!hideConfirm"
             >{{confirmText}}</div>
           </div>
@@ -40,13 +50,13 @@ export default {
   components: {
     wrOverlay,
     wrIcon,
-    wrCreateElement
+    wrCreateElement,
   },
 
   data() {
     return {
       show: false,
-      zIndex:1003,
+      zIndex: 1003,
       //标题
       title: "",
       //内容文本
@@ -68,7 +78,9 @@ export default {
       //自定义内容
       render: "",
       //隐藏遮罩
-      hideOverlay: false
+      hideOverlay: false,
+      //点击
+      active: "",
     };
   },
   computed: {
@@ -81,9 +93,9 @@ export default {
     },
     getContentStyle() {
       return {
-        textAlign: this.contentAlign
+        textAlign: this.contentAlign,
       };
-    }
+    },
   },
   methods: {
     close() {
@@ -94,20 +106,32 @@ export default {
         key in this.$data ? (this[key] = data[key]) : "";
       }
     },
-    cancel() {
-      this.$emit("handle", "cancel");
-      this.close()
+    touchstart(active) {
+      this.active = active;
+      let emitName = "confirm";
+      if (active == "cancel") emitName = "cancel";
+      this.$emit(emitName);
     },
-    confirm() {
-      this.$emit("handle", "confirm");
-       this.close()
+    touchend(e, operate) {
+      let x = e.changedTouches[0].pageX;
+      let y = e.changedTouches[0].pageY;
+      let element = document.elementFromPoint(x, y);
+
+      let pName = element.getAttribute("name");
+      let pOperate = element.getAttribute("operate");
+      if (pName == "dialogButton" && pOperate == operate) this.close();
+      this.active = "";
+    },
+    click(active) {
+      this.touchstart(active);
+      this.touchend();
     },
     createElementRender() {
-      return (this.$createElement = h => {
+      return (this.$createElement = (h) => {
         return h("p", 123);
       });
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">

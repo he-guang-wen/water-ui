@@ -1,6 +1,6 @@
 {
     "name": "water-ui",
-    "version": "0.1.6",
+    "version": "0.1.7",
     "private": false,
     "main": "lib/water-ui.common.js",
     "description": "A Component Library for Vue.js",

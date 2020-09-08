@@ -10,8 +10,8 @@
       <div
         class="wr-action-sheet"
         :style="getactionSheetStyle"
-        @click.stop
-        @touchstart.stop
+        @click.stop=""
+  
         v-show="show"
       >
         <div class="wr-action-sheet_item wr-action-sheet-description" v-if="description">
@@ -21,7 +21,11 @@
           class="wr-action-sheet_item"
           v-for="(item,index) in list"
           :key="index"
-          :class="{'wr-action-sheet_item--disabled':item.disabled}"
+          name="sheetItem"
+          :index="index"
+          :class="{'wr-action-sheet_item--disabled':item.disabled,'wr-action-sheet_item--active':active==index}"
+          @touchstart.stop.prevent="ItemTouchstart(index)"
+          @touchend="ItemTouchend($event,item,index)"
           @click="actionSheetItemClick(item)"
         >
           <div class="wr-action-sheet_item-text" :style="setActionSheetItemStyle(item)">
@@ -47,7 +51,7 @@ export default {
   name: "wrActionSheet",
   components: {
     wrOverlay,
-    wrTransitionAnimation
+    wrTransitionAnimation,
   },
   // props: {
   //   //显示与隐藏
@@ -97,7 +101,8 @@ export default {
       mask: false,
       //点击具体项后不关闭
       closeOnItem: false,
-      hideOverlay: false
+      hideOverlay: false,
+      active: -99,
     };
   },
   computed: {
@@ -110,15 +115,15 @@ export default {
     },
     getactionSheetWarpStyle() {
       return {
-        zIndex: this.zIndex
+        zIndex: this.zIndex,
       };
     },
     getactionSheetStyle() {
       return {
         borderTopLeftRadius: this.borderTopRadius + "px",
-        borderTopRightRadius: this.borderTopRadius + "px"
+        borderTopRightRadius: this.borderTopRadius + "px",
       };
-    }
+    },
   },
   watch: {
     show: {
@@ -130,8 +135,8 @@ export default {
           this.$emit("close", val);
         }
       },
-      deep: true
-    }
+      deep: true,
+    },
   },
   methods: {
     setDate(data) {
@@ -143,8 +148,24 @@ export default {
       if (this.mask) return;
       this.show = false;
     },
+    ItemTouchstart(index) {
+      this.active = index;
+    },
+    ItemTouchend(e, item, index) {
+      this.active = -99;
+      let x = e.changedTouches[0].pageX;
+      let y = e.changedTouches[0].pageY;
+      let element = document.elementFromPoint(x, y);
+      let pName = element.getAttribute("name");
+      let pIndex = element.getAttribute("index");
+      if (pName == "sheetItem" && pIndex == index) {
+        this.show = false;
+        this.$emit("select", item);
+      }
+    },
     actionSheetItemClick(item) {
-      if (this.closeOnItem) return;
+      if (this.closeOnItem) return; 
+      this.active = -99;
       this.show = false;
       this.$emit("select", item);
     },
@@ -154,10 +175,10 @@ export default {
     },
     setActionSheetItemStyle(item) {
       return {
-        color: item.color
+        color: item.color,
       };
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">

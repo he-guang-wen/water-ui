@@ -22,6 +22,13 @@
     </div>
 
     <div class="card">
+      <p class="title">自定义数量</p>
+      <div class="demo__wrapper">
+        <wr-rate v-model="value3" :count="7"></wr-rate>
+      </div>
+    </div>
+    
+    <div class="card">
       <p class="title">自定义图标</p>
       <div class="demo__wrapper">
         <wr-rate v-model="value4" active-icon="heartShape-fill" inactive-icon="heartShape"></wr-rate>
@@ -32,13 +39,6 @@
       <p class="title">最少选中3个</p>
       <div class="demo__wrapper">
         <wr-rate v-model="value5" :min-count="3"></wr-rate>
-      </div>
-    </div>
-
-    <div class="card">
-      <p class="title">自定义数量</p>
-      <div class="demo__wrapper">
-        <wr-rate v-model="value3" :count="7"></wr-rate>
       </div>
     </div>
   </div>

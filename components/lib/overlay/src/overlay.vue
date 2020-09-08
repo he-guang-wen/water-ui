@@ -5,6 +5,7 @@
       class="wr-overlay"
       :class="className"
       :style="[getOverlayStyle,customStyle]"
+      @touchmove.prevent
       @click="overlayClick"
     >
       <slot></slot>

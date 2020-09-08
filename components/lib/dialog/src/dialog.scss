@@ -50,10 +50,13 @@
     border-left: 1px solid #ebedf0;
 }
 
-.wr-dialog__footer-button:active {
+.wr-dialog__footer-button--active {
     background: #f7f8fa;
 }
 
+// .wr-dialog__footer-button:active {
+//     background: #f7f8fa;
+// }
 .wr-dialog__close {
     position: absolute;
     right: 10px;
