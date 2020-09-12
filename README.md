@@ -1,12 +1,11 @@
 
 
 
-
 # Install
 
 ```javascript
 # Using npm
-npm i vant -S
+npm i water-ui -S
 ```
 
 # Quickstart
