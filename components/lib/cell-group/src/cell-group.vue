@@ -6,15 +6,11 @@
 <script>
 export default {
   name: "wrCellGroup",
-  data() {
-    return {};
-  },
   props: {
     background: {
       type: String
-    }
-  },
-  methods: {}
+    },
+  }
 };
 </script>
 <style lang="scss" scoped>

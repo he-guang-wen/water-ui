@@ -1,35 +1,23 @@
 
 
 
-
 # Install
 
 ```javascript
 # Using npm
-npm i vant -S
+npm i water-next -S
 ```
 
 # Quickstart
 ```javascript
-import WaterUi from 'water-ui'
-import 'water-ui/lib/water-ui.css';
-Vue.use(WaterUi);
+import { createApp } from 'vue';
+import App from './App.vue'
+import waterUi from  'water-next'
+import 'water-next/components/style/scss/index.scss'
+const app = createApp(App)
+app.use(waterUi)
+app.mount('#app')
 ```
-
-# Document Address
-github:
-<https://he-guang-wen.github.io/water-ui/docs-dist/>
-
-gitee:
-<https://he-guang-wen.gitee.io/water-ui/docs-dist/>
-
-
-# Demo Address
-github:
-<https://he-guang-wen.github.io/water-ui/dist/>
-
-gitee: 
-<https://he-guang-wen.gitee.io/water-ui/dist/>
 
 # LICENSE
 MIT

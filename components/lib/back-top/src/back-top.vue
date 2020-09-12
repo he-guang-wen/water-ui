@@ -8,6 +8,7 @@
   </div>
 </template> 
 <script>
+import { ref, onMounted, computed, onBeforeUnmount } from "vue";
 export default {
   name: "wrBackTop",
   props: {
@@ -36,50 +37,56 @@ export default {
       default: 10,
     },
   },
-  data() {
-    return {
-      scrollTop: 0,
-      el: this.target ? document.querySelector(this.target) : window,
-    };
-  },
-  computed: {
-    backTopStyle() {
+  setup(props, context) {
+
+
+    const scrollTop = ref(0);
+    const el = ref(0);
+
+    const backTopStyle = computed(() => {
       return {
-        right: this.right + "px",
-        bottom: this.bottom + "px",
+        right: props.right + "px",
+        bottom: props.bottom + "px",
       };
-    },
-    backTopWrapClass() {
+    });
+
+    const backTopWrapClass = computed(() => {
       return {
-        "wr-back-top-wrap--round": this.round,
+        "wr-back-top-wrap--round": props.round,
       };
-    },
-    show() {
-      return this.top > this.scrollTop ? false : true;
-    },
-  },
-  mounted() {
-    this.addEventListenerScroll();
-  },
-  methods: {
-    addEventListenerScroll() {
-      this.el.addEventListener("scroll", this.handleScroll);
-    },
-    handleScroll() {
-      if (this.target) {
-        this.scrollTop = this.el.scrollTop;
+    });
+
+    const show = computed(() => (props.top > scrollTop.value ? false : true));
+
+    const handleScroll = () => {
+      if (props.target) {
+        scrollTop.value = el.value.scrollTop;
       } else {
-        this.scrollTop =
+        scrollTop.value =
           document.documentElement.scrollTop || document.body.scrollTop;
       }
-    },
-    backTop(e) {
-      this.el.scrollTo(0, 0);
-      this.$emit("click", e);
-    },
-  },
-  beforeDestroy() {
-    window.removeEventListener("scroll", this.windowScroll);
+    };
+
+    const addEventListenerScroll = () => {
+      el.value.addEventListener("scroll", handleScroll);
+    };
+
+    const backTop = (e) => {
+      el.value.scrollTo(0, 0);
+      context.emit("click", e);
+    };
+
+    onMounted(() => {
+      el.value = props.target ? document.querySelector(props.target) : window;
+
+      addEventListenerScroll();
+    });
+
+    onBeforeUnmount(() => {
+      window.removeEventListener("scroll");
+    });
+
+    return { scrollTop, el, backTopStyle, backTopWrapClass, show, backTop };
   },
 };
 </script>

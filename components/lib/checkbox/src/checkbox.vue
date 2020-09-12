@@ -1,5 +1,5 @@
 <template>
-  <div class="wr-checkbox" @click="setChecked" :class="getCheckboxClass">
+  <div class="wr-checkbox" @click="setChecked" :class="getCheckboxClass" ref="checkbox">
     <slot name="icon" :props="$data">
       <div
         class="wr-checkbox_icon-wrap"
@@ -15,150 +15,178 @@
   </div>
 </template>
 <script>
+import { computed, nextTick, ref, watch } from "vue";
+let that;
 export default {
   name: "wrCheckbox",
   props: {
     //值
     value: {
       type: Boolean,
-      default: false
+      default: false,
+    },
+    checked: {
+      type: Boolean,
+      default: false,
     },
     //标识符
     name: {
-      type: [String, Number]
+      type: [String, Number],
     },
     //大小
     size: {
       type: [String, Number],
-      default: 22
+      default: 22,
     },
     //圆形
     round: {
       type: Boolean,
-      default: false
+      default: false,
     },
     //禁用
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     //选中状态下的颜色
     checkedColor: {
       type: String,
-      default: "#00a1ff"
+      default: "#00a1ff",
     },
     //平均分布
     spaceBetween: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
-  data() {
-    return {
-      //选中状态
-      checked: false
+  created() {
+    that = this;
+  },
+  setup(props, context) {
+    const checkbox = ref(null);
+    const slected = ref(false);
+
+    const setChecked = (e) => {
+      nextTick(() => {
+        let haveCheckboxGroup;
+        let checked = !slected.value;
+        haveCheckboxGroup = that.$parent.$el.className.indexOf(
+          "wrCheckboxGroup"
+        );
+        if (haveCheckboxGroup != -1) {
+          if (that.$parent.getMeetMax() && !slected.value) return;
+          that.$parent.setValueByCheckboxChecked(checked, props.name);
+        }
+        if (props.disabled || that.$parent.disabled) return;
+        context.emit("click", e);
+        slected.value = checked;
+        context.emit("update:checked", checked);
+      });
     };
-  },
-  watch: {
-    value: {
-      handler(val) {
-        this.checked = val;
-      },
-      immediate: true
-    },
-    checked(val) {
-      this.$emit("change", val);
-    }
-  },
-  computed: {
-    getCheckboxClass() {
+
+    const getCheckboxClass = computed(() => {
       return {
-        "wr-checkbox--disabled": this.disabled,
-        "wr-checkbox__space-between": this.spaceBetween && this.$parent.vertical
+        "wr-checkbox--disabled": props.disabled,
+        "wr-checkbox__space-between":
+          props.spaceBetween && that.$parent.vertical,
       };
-    },
-    getCheckboxIconWrapStyle() {
-      let isDisabled = this.disabled || this.$parent.disabled;
-      let onBackground = isDisabled ? "#ebedf0" : this.checkedColor;
-      let onBorderColor = isDisabled ? "#c8c9cc" : this.checkedColor;
+    });
+
+    const getCheckboxIconWrapStyle = computed(() => {
+      let isDisabled = props.disabled;
+      let onBackground = isDisabled ? "#ebedf0" : props.checkedColor;
+      let onBorderColor = isDisabled ? "#c8c9cc" : props.checkedColor;
       let unBackground = "#fff";
       let unBorderColor = "#ccc";
 
-      let width = this.size + "px";
-      let height = this.size + "px";
-      let background = this.checked ? onBackground : unBackground;
-      let borderColor = this.checked ? onBorderColor : unBorderColor;
-
-      // let style = {
-      //   width: this.size + "px",
-      //   height: this.size + "px"
-      // };
-      // if (this.checked) {
-      //   style.background =
-      //     this.disabled || this.$parent.disabled
-      //       ? "#ebedf0"
-      //       : this.checkedColor;
-      //   style.borderColor =
-      //     this.disabled || this.$parent.disabled
-      //       ? "#c8c9cc"
-      //       : this.checkedColor;
-      // } else {
-      //   style.background = "#fff";
-      //   style.borderColor = "#ccc";
-      // }
+      let width = props.size + "px";
+      let height = props.size + "px";
+      let background = slected.value ? onBackground : unBackground;
+      let borderColor = slected.value ? onBorderColor : unBorderColor;
 
       return {
         width: width,
         height: height,
         background: background,
-        borderColor: borderColor
+        borderColor: borderColor,
       };
-    },
-    getIconColor() {
+    });
+
+    const getIconColor = computed(() => {
       let color = "#fff";
-      if (this.disabled || this.$parent.disabled) {
+      if (props.disabled) {
         color = "#c8c9cc";
       }
       return color;
-    },
-    getIconStyle() {
-      return {
-        opacity: this.checked ? 1 : 0
-      };
-    }
-  },
-  methods: {
-    /**
-     * 修改选中状态
-     */
-    setChecked(e) {
-      // if (this.$parent.getMeetMax() && !this.checked) return;
-      let haveCheckboxGroup;
-      let checked = !this.checked;
-      haveCheckboxGroup = this.$parent.$vnode.tag.indexOf("wrCheckboxGroup");
-      if (haveCheckboxGroup != -1) {
-        if (this.$parent.getMeetMax() && !this.checked) return;
-        this.$parent.setValueByCheckboxChecked(checked, this.name);
-      }
-      if (this.disabled || this.$parent.disabled) return;
-      this.$emit("click", e);
+    });
 
-      this.checked = checked;
-      this.$emit("input", checked);
-    }
-    // setChecked(value) {
-    //   // this.checked = value;
-    //   // if (this.$parent.getMeetMax()) return;
-    //   let haveCheckboxGroup;
-    //   if (this.disabled || this.$parent.disabled) return;
-    //   haveCheckboxGroup = this.$parent.$vnode.tag.indexOf("wrCheckboxGroup");
-    //   if (haveCheckboxGroup != -1) {
-    //     if (this.$parent.getMeetMax() && !this.checked) return;
-    //   }
-    //   this.checked = value;
-    //   this.$emit("input", value);
-    // }
-  }
+    const getIconStyle = computed(() => {
+      return {
+        opacity: slected.value ? 1 : 0,
+      };
+    });
+
+    watch(
+      () => {
+        return slected.value;
+      },
+      (val) => {
+        context.emit("change", val);
+      }
+    );
+
+    nextTick(() => {
+      watch(
+        () => {
+          return that.$parent.value;
+        },
+        (val) => {
+          let find = val.find((val) => {
+            return props.name == val;
+          });
+
+          if (find) {
+            // context.emit("update:checked", true);
+            slected.value = true;
+          } else {
+            slected.value = false;
+            // context.emit("update:checked", false);
+          }
+        },
+        { immediate: true }
+      );
+
+      watch(
+        () => {
+          return that.$parent.operation;
+        },
+        (val) => {
+          switch (val) {
+            case "checkAll":
+              slected.value = true;
+              break;
+            case "reverseAll":
+              slected.value = !slected.value;
+              break;
+            case "cancelAll":
+              slected.value = false
+              break;
+          }
+        },
+        { immediate: true }
+      );
+    });
+
+    return {
+      checkbox,
+      slected,
+      setChecked,
+      getCheckboxClass,
+      getCheckboxIconWrapStyle,
+      getIconColor,
+      getIconStyle,
+    };
+  },
 };
 </script>
 <style lang="scss" scoped>

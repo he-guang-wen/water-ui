@@ -50,14 +50,14 @@ export default {
     if (this.status) {
       if (this.status == "error") {
         wrImageStatus = h("div", { class: "wr-image-error" }, [
-          this.$scopedSlots.error
-            ? this.$scopedSlots.error()
+          this.$slots.error
+            ? this.$slots.error()
             : imageErrorContent
         ]);
       } else if (this.status == "loading") {
         wrImageStatus = h("div", { class: "wr-image-loading" }, [
-          this.$scopedSlots.loading
-            ? this.$scopedSlots.loading()
+          this.$slots.loading
+            ? this.$slots.loading()
             : imageLoadingContent
         ]);
       } else {
@@ -65,7 +65,7 @@ export default {
       }
     } else {
       wrImageStatus = h("div", { class: "wr-image-none" }, [
-        this.$scopedSlots.none ? this.$scopedSlots.none() : imageNoneContent
+        this.$slots.none ? this.$slots.none() : imageNoneContent
       ]);
     }
 

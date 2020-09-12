@@ -9,62 +9,66 @@
   </div>
 </template> 
 <script>
+import { computed, onMounted } from "vue";
 export default {
   name: "wrBadge",
   props: {
     //标徽值
     value: {
-      type: [String, Number]
+      type: [String, Number],
     },
     //背景色
     background: {
-      type: String
+      type: String,
     },
     //字体颜色
     color: {
       type: String,
-      default:'#fff'
+      default: "#fff",
     },
     //主题
     type: {
       type: String,
-      default: "primary"
+      default: "primary",
     },
     //是否圆点
     isDot: {
       type: Boolean,
-      default: false
+      default: false,
     },
     //偏移
     offset: {
       type: Array,
       default: () => {
         return [0, 0];
-      }
-    }
-  },
-  computed: {
-    badgeContentStyle() {
-      return {
-        right: this.offset[0] + "px",
-        top: this.offset[1] + "px",
-        color:this.color,
-        background:this.background
-      };
+      },
     },
-    formatValue() {
-      if (this.value) {
-    return this.value;
-      } else {
-        return "";
-      }
-    }
   },
-  methods:{
-    badgeClick(e){
-      this.$emit("click",e)
-    }
-  }
+  setup(props, context) {
+    onMounted(function(){
+console.log(context,'console.log(this)console.log(this)')
+    })
+    const badgeContentStyle = computed(() => {
+      return {
+        right: props.offset[0] + "px",
+        top: props.offset[1] + "px",
+        color: props.color,
+        background: props.background,
+      };
+    });
+
+    const formatValue = computed(() => {
+      let value = "";
+      if (props.value) value = props.value;
+      return value;
+    });
+
+    const badgeClick = (e) => {
+      context.emit("click", e);
+    };
+
+    return { badgeContentStyle, formatValue, badgeClick };
+  },
 };
 </script>
 <style lang="scss" >

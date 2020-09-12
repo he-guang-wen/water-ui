@@ -1,8 +1,11 @@
 import ActionSheet from './src/action-sheet.vue'
-import Vue from 'vue';
+import { createApp, nextTick } from 'vue';
 
-const ActionSheetBox = Vue.extend(ActionSheet)
-const ActionSheetInstance = new ActionSheetBox().$mount()
+const ActionSheetContainer = document.createElement("div")
+document.body.appendChild(ActionSheetContainer)
+
+const ActionSheetBox = createApp(ActionSheet)
+const ActionSheetInstance = ActionSheetBox.mount(ActionSheetContainer)
 
 const wrActionSheet = function(data) {
     let {
@@ -14,7 +17,7 @@ const wrActionSheet = function(data) {
         mask,
         closeOnItem,
         zIndex,
-        hideOverlay
+        hideOverlay,
     } = data
     list ? '' : list = []
     borderTopRadius ? '' : borderTopRadius = 12
@@ -36,17 +39,58 @@ const wrActionSheet = function(data) {
         zIndex,
         hideOverlay
     })
+
     ActionSheetInstance.show = true
-    ActionSheetInstance.$once('open', (e) => {
-        data.onOpen ? data.onOpen(e) : ''
+
+    console.log(ActionSheetInstance, 'ActionSheetInstanceActionSheetInstance')
+    nextTick(() => {
+        ActionSheetInstance.event.on("open", (e) => {
+            data.onOpen ? data.onOpen(e) : ''
+        })
+
+        ActionSheetInstance.event.on("close", (e) => {
+            data.onClose ? data.onClose(e) : ''
+        })
+
+
+        ActionSheetInstance.event.on("select", (e) => {
+            data.onSelect ? data.onSelect(e) : ''
+        })
+
+        ActionSheetInstance.event.on("cancel", (e) => {
+            data.onCancel ? data.onCancel(e) : ''
+        })
     })
-    ActionSheetInstance.$once('close', (e) => {
-        data.onClose ? data.onClose(e) : ''
-    })
+
+
+    // watch(() => { return ActionSheetInstance.show }, (value) => {
+    //         if (value) {
+    //             data.onOpen ? data.onOpen() : ''
+    //         } else {
+    //             data.onClose ? data.onClose() : ''
+    //         }
+    //     })
+    // ActionSheetInstance.$el.nextSibling.addEventListener("open", () => {
+    //     data.onOpen ? data.onOpen() : ''
+    // })
+
+    // window.$el.addEventListener("close", () => {
+    //     data.onClose ? data.onClose() : ''
+    // })
+
+    // ActionSheetInstance.$on('open', (e) => {
+    //     data.onOpen ? data.onOpen(e) : ''
+    // })
+    // ActionSheetInstance.$on('close', (e) => {
+    //     data.onClose ? data.onClose(e) : ''
+    // })
+
 
 }
 ActionSheet.close = () => {
     ActionSheetInstance.show = false
 }
-document.body.appendChild(ActionSheetInstance.$el)
+
+
+
 export default wrActionSheet

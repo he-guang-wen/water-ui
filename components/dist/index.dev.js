@@ -93,23 +93,19 @@ require("./style/iconfont/iconfont.css");
 
 require("./style/scss/index.scss");
 
-var _index42 = _interopRequireDefault(require("./lib/toast/index"));
-
-var _index43 = _interopRequireDefault(require("./lib/action-sheet/index"));
-
-var _index44 = _interopRequireDefault(require("./lib/dialog/index"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+// import wrToast from './lib/toast/index'
+// import wrActionSheet from './lib/action-sheet/index'
+// import wrDialog from './lib/dialog/index'
 var components = [_index["default"], _index2["default"], _index3["default"], _index4["default"], _index5["default"], _index6["default"], _index7["default"], _index8["default"], _index9["default"], _index10["default"], _index11["default"], _index12["default"], _index13["default"], _index18["default"], _index15["default"], _index16["default"], _index17["default"], _index14["default"], _index19["default"], _index21["default"], _index24["default"], _index25["default"], _index22["default"], _index23["default"], _index26["default"], _index27["default"], _tabBar["default"], _tabBarItem["default"], _index28["default"], _index29["default"], _index30["default"], _index31["default"], _index32["default"], _index33["default"], _index34["default"], _index35["default"], _index36["default"], _index37["default"], _index38["default"], _index39["default"], _index20["default"], _index40["default"]];
 
 var install = function install(Vue) {
   components.forEach(function (component) {
     Vue.component(component.name, component);
-  });
-  Vue.prototype.$wrToast = _index42["default"];
-  Vue.prototype.$wrActionSheet = _index43["default"];
-  Vue.prototype.$wrDialog = _index44["default"];
+  }); // Vue.prototype.$wrToast = wrToast
+  // Vue.prototype.$wrActionSheet = wrActionSheet
+  // Vue.prototype.$wrDialog = wrDialog
 };
 /* 支持使用标签的方式引入 Vue是全局变量时，自动install */
 
@@ -143,9 +139,9 @@ var _default = {
   wrSwiper: _index24["default"],
   wrSwiperItem: _index25["default"],
   TransitionAnimation: _index20["default"],
-  wrToast: _index42["default"],
-  wrActionSheet: _index43["default"],
-  wrDialog: _index44["default"],
+  // wrToast,
+  // wrActionSheet,
+  // wrDialog,
   wrOverlay: _index22["default"],
   wrSwipeCell: _index23["default"],
   wrBackTop: _index26["default"],

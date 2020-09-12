@@ -17,7 +17,7 @@ export default {
       {
         attrs: { name: "wr-" + this.name }
       },
-      this.$scopedSlots.default ? this.$scopedSlots.default() : ""
+      this.$slots.default ? this.$slots.default() : ""
     );
   }
 };

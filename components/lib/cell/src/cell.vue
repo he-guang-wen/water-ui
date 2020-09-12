@@ -1,5 +1,6 @@
 
 <script>
+import {h} from "vue";
 export default {
   name: "wrCell",
   props: {
@@ -34,44 +35,45 @@ export default {
       type: [String, Number]
     }
   },
-  render: function(h) {
+  setup(props,context){
+     
     //设置头部内容
     const setcellHeader = () => {
       //左边图标
-      const icon = this.icon
+      const icon = props.icon
         ? h("wr-icon", {
             props: {
-              name: this.icon,
-              color: this.iconColor
+              name: props.icon,
+              color: props.iconColor
             }
           })
         : "";
       //右边是否显示箭头
-      const arrow = this.arrow
+      const arrow = props.arrow
         ? h("wr-icon", {
             props: {
               name: "arrow-right",
-              color: this.iconColor
+              color: props.iconColor
             },
-            class: "arrow-direction--" + this.arrowDirection
+            class: "arrow-direction--" + props.arrowDirection
           })
         : "";
 
       //头部左侧内容
       const headerLeftContent = [
-        this.showIcon ? icon : "",
+        props.showIcon ? icon : "",
         h(
           "span",
           {
             class: "wr-cell-header_right"
           },
-          this.title
+          props.title 
         )
       ];
    
       //头部左侧插槽
-      const slotHeaderLeft = this.$scopedSlots.left
-        ? this.$scopedSlots.left()
+      const slotHeaderLeft = context.slots.left
+        ? context.slots.left()
         : headerLeftContent;
 
            const headerLeft = h(
@@ -79,7 +81,7 @@ export default {
         {
           class: "wr-cell-header_left",
           style: {
-            color: this.titleColor
+            color: props.titleColor
           }
         },
         slotHeaderLeft
@@ -93,14 +95,14 @@ export default {
           {
             class: "wr-cell-header_content"
           },
-          this.content
+          props.content
         ),
         arrow
       ];
 
       //头部右侧插槽
-      const slotHeaderRight = this.$scopedSlots.right
-        ? this.$scopedSlots.right()
+      const slotHeaderRight = context.slots.right
+        ? context.slots.right()
         : headerRightContent;
 
       const headerRight = h(
@@ -112,7 +114,7 @@ export default {
       );
 
       //头部
-      const cellHeader = h(
+      const cellHeader = h( 
         "div",
         {
           class: "wr-cell-header"
@@ -126,19 +128,19 @@ export default {
     //设置描述内容
     const setcelldescription = () => {
       //描述内容
-      const description = this.description
+      const description = props.description
         ? h(
             "div",
             {
               class: "cell-description"
             },
-            this.description
+            props.description
           )
         : "";
 
       //描述插槽
-      const slotdescription = this.$scopedSlots.description
-        ? this.$scopedSlots.description()
+      const slotdescription = context.slots.description
+        ? context.slots.description()
         : description;
 
       const celldescription = h(
@@ -158,19 +160,18 @@ export default {
       {
         class: "wr-cell",
         on: {
-          click: this.cellClick
+          click: props.cellClick
         }
       },
       [setcellHeader(), setcelldescription()]
     );
-
-    return cell;
+    return () =>cell;
   },
-  methods: {
-    cellClick(e) {
-      this.$emit("click", e);
-    }
-  }
+  // methods: {
+  //   cellClick(e) {
+  //     this.$emit("click", e);
+  //   }
+  // }
 };
 </script>
 <style lang="scss">

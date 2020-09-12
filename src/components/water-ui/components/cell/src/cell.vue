@@ -78,8 +78,8 @@ export default {
         ]
       );
       //头部左侧插槽
-      const slotHeaderLeft = this.$scopedSlots.left
-        ? this.$scopedSlots.left()
+      const slotHeaderLeft = this.$slots.left
+        ? this.$slots.left()
         : leftTitle;
       //头部
       const cellHeader = h(
@@ -125,8 +125,8 @@ export default {
         : "";
 
       //描述插槽
-      const slotDescribe = this.$scopedSlots.describe
-        ? this.$scopedSlots.describe()
+      const slotDescribe = this.$slots.describe
+        ? this.$slots.describe()
         : describe;
 
       const cellDescribe = h(
